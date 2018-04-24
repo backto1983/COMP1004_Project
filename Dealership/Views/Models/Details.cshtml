@@ -1,0 +1,51 @@
+﻿@model Dealership.Models.Model
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Model</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Type.type1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type.type1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.engineSize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.engineSize)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.doors)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.doors)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.colour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.colour)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.modelID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,67 @@
+﻿@model Dealership.Models.Vehicle
+
+@{
+    ViewBag.Title = "Car Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Car Details</h2>
+
+<div>
+    <h4>Vehicle</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Make.make1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Make.make1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Model.colour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Model.colour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.soldDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soldDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.vehicleID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Dealership.Models.Vehicle>
+
+@{
+    ViewBag.Title = "Vehicles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@*@ViewBag.VehiclesCount*@ Cars Available</h2>
+
+<div class="col-md-3">
+    @if (Request.IsAuthenticated) //"Create New" link only visible when the user is logged
+    {
+        @Html.ActionLink("Create New", "Create")
+    }
+</div>
+
+@*<div class="col-md-9 text-right">
+    <!--This div contains the search form, which is protected against malicious statement injections thanks
+        to the AntyForgeryToken-->
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken();
+        <input name="Make" id="Make" placeholder="Search by Car Make" />
+        <!--The search function looks for books based on its titles (Make), which was defined in the
+            bookInfo model -->
+        <button class="btn btn-default">Search</button>
+    }
+</div>*@
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Make.make1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Model.colour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        @if (Request.IsAuthenticated) //"Cost and Sold Date" columns only visible when the user is logged
+        {
+            <th>
+                @Html.DisplayNameFor(model => model.cost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.soldDate)
+            </th>
+        }
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Make.make1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model.colour)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        @if (Request.IsAuthenticated) //"Edit, Details and Delete" links only visible when the user is logged
+        {
+            <td>
+                @Html.DisplayFor(modelItem => item.cost)
+            </td>        
+            <td>
+                @Html.DisplayFor(modelItem => item.soldDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.vehicleID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.vehicleID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.vehicleID })
+            </td>
+        }
+    </tr>
+    }
+
+</table>

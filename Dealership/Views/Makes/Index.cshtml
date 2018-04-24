@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Dealership.Models.Make>
+
+@{
+    ViewBag.Title = "Makes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Choose Your Car By Make</h2>
+
+<div class="col-md-3">
+    @if (Request.IsAuthenticated) //"Create New" link only visible when the user is logged
+    {
+        @Html.ActionLink("Create New", "Create")
+    }
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.make1)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.make1)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.makeID })
+        </td>
+        @if (Request.IsAuthenticated) //"Edit, Details and Delete" links only visible when the user is logged
+        {
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.makeID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.makeID })
+        </td>
+        }
+    </tr>
+}
+
+</table>
